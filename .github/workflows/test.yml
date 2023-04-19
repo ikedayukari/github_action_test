@@ -19,13 +19,14 @@ jobs:
           echo "removed ${{ join(github.event.head_commit.removed, ',') }}"
           echo "modified ${{ join(github.event.head_commit.modified, ',') }}"
           echo "modified ${{ join(github.event.head_commit.aaaaaa, ',') }}"
+          echo "${{ github.event.commits }}"
           # cat $GITHUB_EVENT_PATH
 
-      - name: Commits
-        env:
-          COMMITS: ${{ github.event.commits }}
-        run: |
-          .github/workflows/commits.sh
+      # - name: Commits
+      #   env:
+      #     COMMITS: ${{ github.event.commits }}
+      #   run: |
+      #     .github/workflows/commits.sh
 
       # - name: Message
       #   env:
