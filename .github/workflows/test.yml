@@ -18,4 +18,5 @@ jobs:
           echo "added ${{ join(github.event.head_commit.added, ',') }}"
           echo "removed ${{ join(github.event.head_commit.removed, ',') }}"
           echo "modified ${{ join(github.event.head_commit.modified, ',') }}"
-          cat $GITHUB_EVENT_PATH
+          echo "modified ${{ join(github.event.head_commit.aaaaaa, ',') }}"
+          # cat $GITHUB_EVENT_PATH
