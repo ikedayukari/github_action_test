@@ -1,11 +1,5 @@
 #!/usr/bin/env bash
 
-for commit in ${COMMITS} ; do
-    echo "${commit}"
-done
-
-#!/bin/bash
-
 messages=$(jq -r '
     (.[] | [.message, .author.name, .timestamp, .url])
     | @tsv
