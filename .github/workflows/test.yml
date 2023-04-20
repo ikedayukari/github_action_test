@@ -7,6 +7,17 @@ jobs:
 
     steps:
 
+      - name: Test1
+        id: test1
+        run: |
+          echo "commits_count=$(echo "$(( 2 + $(echo "${{ join(github.event.commits.*.id, ',') }}" | tr ',' '\n' | grep -c '')))")" >> $GITHUB_OUTPUT
+
+      - name: Test2
+        uses: actions/checkout@v3
+        with:
+          ref: ${{ github.ref_name }}
+          fetch-depth: ${{ steps.test1.outputs.commits_count }}
+
       # - name: Test
       #   run: |
       #     echo "message ${{ github.event.head_commit.message }}"
