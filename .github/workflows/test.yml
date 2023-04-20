@@ -7,26 +7,26 @@ jobs:
 
     steps:
 
-      - name: Test
-        run: |
-          echo "message ${{ github.event.head_commit.message }}"
-          echo "author ${{ github.event.head_commit.author.name }}" 
-          echo "timestamp ${{ github.event.head_commit.timestamp }}"
-          echo "sha ${{ github.event.after }}"
-          echo "id ${{ github.event.head_commit.id }}"
-          echo "url ${{ github.event.head_commit.url }}"
-          echo "added ${{ join(github.event.head_commit.added, ',') }}"
-          echo "removed ${{ join(github.event.head_commit.removed, ',') }}"
-          echo "modified ${{ join(github.event.head_commit.modified, ',') }}"
-          echo "modified ${{ join(github.event.head_commit.aaaaaa, ',') }}"
-          echo "${{ toJSON(github.event.commits) }}"
-          # cat $GITHUB_EVENT_PATH
-
-      # - name: Commits
-      #   env:
-      #     COMMITS: ${{ github.event.commits }}
+      # - name: Test
       #   run: |
-      #     .github/workflows/commits.sh
+      #     echo "message ${{ github.event.head_commit.message }}"
+      #     echo "author ${{ github.event.head_commit.author.name }}" 
+      #     echo "timestamp ${{ github.event.head_commit.timestamp }}"
+      #     echo "sha ${{ github.event.after }}"
+      #     echo "id ${{ github.event.head_commit.id }}"
+      #     echo "url ${{ github.event.head_commit.url }}"
+      #     echo "added ${{ join(github.event.head_commit.added, ',') }}"
+      #     echo "removed ${{ join(github.event.head_commit.removed, ',') }}"
+      #     echo "modified ${{ join(github.event.head_commit.modified, ',') }}"
+      #     echo "modified ${{ join(github.event.head_commit.aaaaaa, ',') }}"
+      #     echo "${{ toJSON(github.event.commits) }}"
+      #     # cat $GITHUB_EVENT_PATH
+
+      - name: Commits
+        env:
+          COMMITS: ${{ toJSON(github.event.commits) }}
+        run: |
+          .github/workflows/commits.sh
 
       # - name: Message
       #   env:
