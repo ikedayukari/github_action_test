@@ -19,7 +19,7 @@ jobs:
           echo "removed ${{ join(github.event.head_commit.removed, ',') }}"
           echo "modified ${{ join(github.event.head_commit.modified, ',') }}"
           echo "modified ${{ join(github.event.head_commit.aaaaaa, ',') }}"
-          echo "${{ github.event.commits }}"
+          echo "${{ toJSON(github.event.commits) }}"
           # cat $GITHUB_EVENT_PATH
 
       # - name: Commits
