@@ -20,6 +20,8 @@ message=$(echo "${COMMITS}" | jq -r '
     done
 })
 
+echo "$message"
+
 cat <<EOF >>"$GITHUB_OUTPUT"
 message=$message
 EOF
