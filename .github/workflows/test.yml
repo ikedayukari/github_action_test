@@ -18,6 +18,11 @@ jobs:
           ref: ${{ github.ref_name }}
           fetch-depth: ${{ steps.test1.outputs.commits_count }}
 
+      - name: Test3
+        run: |
+          mkdir ../output
+          git config diff.renames false
+
       # - name: Test
       #   run: |
       #     echo "message ${{ github.event.head_commit.message }}"
