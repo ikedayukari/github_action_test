@@ -10,7 +10,7 @@ jobs:
       - name: Test1
         id: test1
         run: |
-          echo "commits_count=$(echo "$(( 2 + $(echo "${{ join(github.event.commits.*.id, ',') }}" | tr ',' '\n' | grep -c '')))")" >> $GITHUB_OUTPUT
+          echo "commits_count=$(echo "$(( 1 + $(echo "${{ join(github.event.commits.*.id, ',') }}" | tr ',' '\n' | grep -c '')))")" >> $GITHUB_OUTPUT
 
       - name: Test2
         uses: actions/checkout@v3
@@ -36,6 +36,7 @@ jobs:
       - name: Commits
         env:
           COMMITS: ${{ toJSON(github.event.commits) }}
+          BEFORE_ID: ${{ github.event.before }}
         run: |
           .github/workflows/commits.sh
 
