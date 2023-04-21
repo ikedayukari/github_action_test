@@ -21,7 +21,6 @@ jobs:
       - name: Test3
         run: |
           mkdir ../output
-          git config diff.renames false
 
       # - name: Test
       #   run: |
