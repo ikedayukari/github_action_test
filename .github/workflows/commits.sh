@@ -24,4 +24,4 @@ echo "$message"
 
 echo "message<<EOF" >> "$GITHUB_OUTPUT"
 $message >> "$GITHUB_OUTPUT"
-echo "$EOF" >> "$GITHUB_OUTPUT"
+echo "EOF" >> "$GITHUB_OUTPUT"
