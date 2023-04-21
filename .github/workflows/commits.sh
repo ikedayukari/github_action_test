@@ -20,8 +20,9 @@ message=$(echo "${COMMITS}" | jq -r '
     done
 })
 
+delimiter="EOF$(openssl rand -hex 8)"
 {
-  echo "message<<EOF"
+  echo "message<<${delimiter}"
   echo "$message"
-  echo "EOF"
+  echo "${delimiter}"
 } >> "$GITHUB_OUTPUT"
