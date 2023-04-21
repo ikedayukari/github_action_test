@@ -20,8 +20,8 @@ message=$(echo "${COMMITS}" | jq -r '
     done
 })
 
-echo "$message"
-
-echo "message<<EOF" >> "$GITHUB_OUTPUT"
-echo "$message" >> "$GITHUB_OUTPUT"
-echo "EOF" >> "$GITHUB_OUTPUT"
+{
+  echo "message<<EOF"
+  echo "$message"
+  echo "EOF"
+} >> "$GITHUB_OUTPUT"
