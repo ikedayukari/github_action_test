@@ -7,6 +7,10 @@ messages=$(echo "${COMMITS}" | jq -r '
 ' | 
 {
     while IFS=$'\t' read -r message name timestamp id url; do
+        parent_count=git cat-file -p "${id}" | grep -c '^parent'
+        if [ 1 -lt "$(parent_count)" ]; then
+            continue
+        fi
         added_files=$(git diff --diff-filter=A --name-only "${before_id}".."${id}" ':!/ignore_directory/*' | sed "s/^/added：/g")
         removed_files=$(git diff --diff-filter=R --name-only "${before_id}".."${id}" ':!/ignore_directory/*' | sed "s/^/removed：/g")
         modified_files=$(git diff --diff-filter=M --name-only "${before_id}".."${id}" ':!/ignore_directory/*' | sed "s/^/modified：/g")
