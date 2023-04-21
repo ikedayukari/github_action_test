@@ -42,7 +42,6 @@ jobs:
         id: commits
         env:
           COMMITS: ${{ toJSON(github.event.commits) }}
-          BEFORE_ID: ${{ github.event.before }}
         run: |
           .github/workflows/commits.sh
 
