@@ -51,5 +51,5 @@ jobs:
           ABCDEF: ${{ secrets.ABCDEF }}
           ROOM_ID: ${{ secrets.ROOM_ID }}
           MESSAGE: ${{ steps.commits.outputs.message }}
-        rum: |
+        run: |
           .github/workflows/message.sh
