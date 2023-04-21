@@ -2,7 +2,7 @@
 
 before_id=${BEFORE_ID}
 
-echo "message=$(echo "${COMMITS}" | jq -r '
+message=$(echo "${COMMITS}" | jq -r '
     (.[] | [.message, .author.name, .timestamp, .id, .url])
     | @tsv
 ' | 
@@ -18,4 +18,6 @@ echo "message=$(echo "${COMMITS}" | jq -r '
         printf "[info][title]%s\n%s(%s)[/title]%s%s%s[hr]%s[/info]\n" "$message" "$name" "$timestamp" "$added_files" "$removed_files" "$modified_files" "$url"
         before_id=${id}
     done
-})" >> "$GITHUB_OUTPUT"
+})
+
+echo "message=$message" >> "$GITHUB_OUTPUT"
