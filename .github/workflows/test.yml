@@ -46,7 +46,7 @@ jobs:
       - name: Message
         env:
           ABCDEF: ${{ secrets.ABCDEF }}
-          ROOM_ID: ${{ secrets.ROOM_ID2 }}
+          ROOM_ID: ${{ secrets.ROOM_ID }}
           MESSAGE: ${{ steps.commits.outputs.message }}
         run: |
           .github/workflows/message.sh
