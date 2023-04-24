@@ -45,7 +45,7 @@ jobs:
 
       - name: Message
         env:
-          ABCDEF: ${{ secrets.ABCDEF }}
+          ABCDEF: ${{ secrets.ABCDEF2 }}
           ROOM_ID: ${{ secrets.ROOM_ID2 }}
           MESSAGE: ${{ steps.commits.outputs.message }}
         run: |
